@@ -3,10 +3,10 @@
 #      ███    ███ ███    ███   ███    ███   ███    ███
 #      ███    ███ ███    ███   ███    █▀    ███    █▀
 #     ▄███▄▄▄██▀  ███    ███   ███          ███
-#    ▀▀███▀▀▀██▄  ███    ███ ▀███████████ ▀███████████ ¦ Dev : @TH3CZAR
+#    ▀▀███▀▀▀██▄  ███    ███ ▀███████████ ▀███████████ ¦ Dev : @TH3MOD
 #      ███    ██▄ ███    ███          ███          ███ ¦ Dev : @OMMMM
 #      ███    ███ ███    ███    ▄█    ███    ▄█    ███
-#    ▄█████████▀   ▀██████▀   ▄████████▀   ▄████████▀  ¦ Source TH3CZAR BY @TH3BS
+#    ▄█████████▀   ▀██████▀   ▄████████▀   ▄████████▀  ¦ Source TH3MOD BY @TH3BS
 #---------------------------------------------------------------------
 ]]
 
@@ -17,9 +17,9 @@ if not msg.Director then return "⌁︙ هذا الامر يخص {المطور,�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_RandomRdod"..msg.chat_id_) then 
+if redis:get(MOD.."lock_RandomRdod"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الردود العشوائيه    \n " ) 
-else redis:set(CZAR.."lock_RandomRdod"..msg.chat_id_,true)
+else redis:set(MOD.."lock_RandomRdod"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الردود العشوائيه بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -30,9 +30,9 @@ if not msg.Director then return "⌁︙ هذا الامر يخص {المطور,�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_RandomRdod"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_RandomRdod"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الردود العشوائيه    \n " ) 
-else redis:del(CZAR.."lock_RandomRdod"..msg.chat_id_) 
+else redis:del(MOD.."lock_RandomRdod"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الردود العشوائيه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -44,9 +44,9 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_KickBan"..msg.chat_id_) then 
+if redis:get(MOD.."lock_KickBan"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الحظر والطرد    \n " ) 
-else redis:set(CZAR.."lock_KickBan"..msg.chat_id_,true)
+else redis:set(MOD.."lock_KickBan"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الحظر والطرد بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -57,9 +57,9 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_KickBan"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_KickBan"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الحظر والطرد    \n " ) 
-else redis:del(CZAR.."lock_KickBan"..msg.chat_id_) 
+else redis:del(MOD.."lock_KickBan"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الحظر والطرد بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -71,9 +71,9 @@ if not msg.Director then return "⌁︙ هذا الامر يخص {المطور,�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_rdodSource"..msg.chat_id_) then 
+if redis:get(MOD.."lock_rdodSource"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل ردود السورس    \n " ) 
-else redis:set(CZAR.."lock_rdodSource"..msg.chat_id_,true)
+else redis:set(MOD.."lock_rdodSource"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل ردود السورس بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -84,9 +84,9 @@ if not msg.Director then return "⌁︙ هذا الامر يخص {المطور,�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_rdodSource"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_rdodSource"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل  ردود السورس    \n " ) 
-else redis:del(CZAR.."lock_rdodSource"..msg.chat_id_) 
+else redis:del(MOD.."lock_rdodSource"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل ردود السورس بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -98,9 +98,9 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_check"..msg.chat_id_) then
+if not redis:get(MOD.."lock_check"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل التحقق    \n " )        else 
-redis:del(CZAR.."lock_check"..msg.chat_id_)
+redis:del(MOD.."lock_check"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل التحقق بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -111,9 +111,9 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_check"..msg.chat_id_) then
+if redis:get(MOD.."lock_check"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل التحقق    \n " )        else
-redis:set(CZAR.."lock_check"..msg.chat_id_,true)
+redis:set(MOD.."lock_check"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل التحقق بنجاح   \n " )
 end
 end,{msg=msg})
@@ -125,17 +125,17 @@ if not msg.Director then return "⌁︙ هذا الامر يخص {المطور,�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_cleaner"..msg.chat_id_) then
+if not redis:get(MOD.."lock_cleaner"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل التنظيف التلقائي    \n " )
 else 
 
-redis:del(CZAR.."lock_cleaner"..msg.chat_id_)
-local Cleaner = redis:smembers(CZAR..":IdsMsgsCleaner:"..msg.chat_id_)
+redis:del(MOD.."lock_cleaner"..msg.chat_id_)
+local Cleaner = redis:smembers(MOD..":IdsMsgsCleaner:"..msg.chat_id_)
 for k,v in pairs(Cleaner) do
-redis:del(CZAR..":SetTimerCleaner:"..msg.chat_id_..v) 
+redis:del(MOD..":SetTimerCleaner:"..msg.chat_id_..v) 
 Del_msg(msg.chat_id_,v)
 end
-redis:del(CZAR..":IdsMsgsCleaner:"..msg.chat_id_)
+redis:del(MOD..":IdsMsgsCleaner:"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل التنظيف التلقائي بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -146,9 +146,9 @@ if not msg.Director then return "⌁︙ هذا الامر يخص {المطور,�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_cleaner"..msg.chat_id_) then
+if redis:get(MOD.."lock_cleaner"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل التنظيف التلقائي    \n " )        else
-redis:set(CZAR.."lock_cleaner"..msg.chat_id_,true)
+redis:set(MOD.."lock_cleaner"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل التنظيف التلقائي بنجاح   \n " )
 end
 end,{msg=msg})
@@ -161,9 +161,9 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_takkl"..msg.chat_id_) then 
+if redis:get(MOD.."lock_takkl"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل تاك للكل    \n " ) 
-else redis:set(CZAR.."lock_takkl"..msg.chat_id_,true)
+else redis:set(MOD.."lock_takkl"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل تاك للكل   \n " ) 
 end
 end,{msg=msg})
@@ -174,10 +174,10 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_takkl"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_takkl"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل تاك للكل    \n " ) 
 else
-redis:del(CZAR.."lock_takkl"..msg.chat_id_) 
+redis:del(MOD.."lock_takkl"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل تاك للكل بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -189,9 +189,9 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_leftgroup"..msg.chat_id_) then 
+if redis:get(MOD.."lock_leftgroup"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل المغادره    \n " ) 
-else redis:set(CZAR.."lock_leftgroup"..msg.chat_id_,true)
+else redis:set(MOD.."lock_leftgroup"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل المغادره بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -202,10 +202,10 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_leftgroup"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_leftgroup"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل المغادره    \n " )
 else
-redis:del(CZAR.."lock_leftgroup"..msg.chat_id_) 
+redis:del(MOD.."lock_leftgroup"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل المغادره بنجاح   \n " )
 end 
 end,{msg=msg})
@@ -218,9 +218,9 @@ if not msg.SuperCreator then return "⌁︙ هذا الامر يخص {المنش
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."antiedit"..msg.chat_id_) then 
+if redis:get(MOD.."antiedit"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الحمايه    \n " ) 
-else redis:set(CZAR.."antiedit"..msg.chat_id_,true)
+else redis:set(MOD.."antiedit"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الحمايه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -231,10 +231,10 @@ if not msg.SuperCreator then return "⌁︙ هذا الامر يخص {المنش
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."antiedit"..msg.chat_id_) then 
+if not redis:get(MOD.."antiedit"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الحمايه    \n " ) 
 else
-redis:del(CZAR.."antiedit"..msg.chat_id_) 
+redis:del(MOD.."antiedit"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الحمايه بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -246,9 +246,9 @@ if not msg.Director  then return "⌁︙ هذا الامر يخص {المدير,
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."idphoto"..msg.chat_id_) then 
+if redis:get(MOD.."idphoto"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الايدي بالصوره    \n " ) 
-else redis:set(CZAR.."idphoto"..msg.chat_id_,true)
+else redis:set(MOD.."idphoto"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الايدي بالصوره بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -259,10 +259,10 @@ if not msg.Director  then return "⌁︙ هذا الامر يخص {المدير,
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."idphoto"..msg.chat_id_) then 
+if not redis:get(MOD.."idphoto"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الايدي بالصوره    \n " ) 
 else
-redis:del(CZAR.."idphoto"..msg.chat_id_) 
+redis:del(MOD.."idphoto"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الايدي بالصوره بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -273,9 +273,9 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_linkk"..msg.chat_id_) then 
+if redis:get(MOD.."lock_linkk"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الرابط    \n " ) 
-else redis:set(CZAR.."lock_linkk"..msg.chat_id_,true)
+else redis:set(MOD.."lock_linkk"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الرابط بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -286,10 +286,10 @@ if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_linkk"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_linkk"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الرابط    \n " ) 
 else
-redis:del(CZAR.."lock_linkk"..msg.chat_id_) 
+redis:del(MOD.."lock_linkk"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الرابط بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -300,9 +300,9 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص {الادمن,ال
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_woring"..msg.chat_id_) then 
+if redis:get(MOD.."lock_woring"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل التحذير    \n " ) 
-else redis:set(CZAR.."lock_woring"..msg.chat_id_,true)
+else redis:set(MOD.."lock_woring"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل التحذير بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -313,10 +313,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص {الادمن,ال
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_woring"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_woring"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل التحذير    \n " ) 
 else
-redis:del(CZAR.."lock_woring"..msg.chat_id_) 
+redis:del(MOD.."lock_woring"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل التحذير بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -327,10 +327,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص {الادمن,ال
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_id"..msg.chat_id_) then 
+if not redis:get(MOD.."lock_id"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الايدي    \n " ) 
 else
-redis:del(CZAR.."lock_id"..msg.chat_id_) 
+redis:del(MOD.."lock_id"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الايدي بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -341,10 +341,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص {الادمن,ال
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_id"..msg.chat_id_) then 
+if redis:get(MOD.."lock_id"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الايدي    \n " ) 
 else 
-redis:set(CZAR.."lock_id"..msg.chat_id_,true)  
+redis:set(MOD.."lock_id"..msg.chat_id_,true)  
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الايدي بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -355,9 +355,9 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص {الادمن,ال
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."welcome:get"..msg.chat_id_) then 
+if redis:get(MOD.."welcome:get"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الترحيب    \n " ) 
-else redis:set(CZAR.."welcome:get"..msg.chat_id_,true)  
+else redis:set(MOD.."welcome:get"..msg.chat_id_,true)  
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الترحيب بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -368,10 +368,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص {الادمن,ال
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."welcome:get"..msg.chat_id_) then 
+if not redis:get(MOD.."welcome:get"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الترحيب    \n " ) 
 else
-redis:del(CZAR.."welcome:get"..msg.chat_id_) 
+redis:del(MOD.."welcome:get"..msg.chat_id_) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الترحيب بنجاح   \n " ) 
 end 
 end,{msg=msg})
@@ -383,24 +383,24 @@ GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
 redis:mset(
-CZAR.."lock_username"..msg.chat_id_,true,
-CZAR.."mute_gif"..msg.chat_id_,true,
-CZAR.."mute_photo"..msg.chat_id_,true,
-CZAR.."mute_audio"..msg.chat_id_,true,
-CZAR.."mute_voice"..msg.chat_id_,true,
-CZAR.."mute_sticker"..msg.chat_id_,true,
-CZAR.."mute_forward"..msg.chat_id_,true,
-CZAR.."mute_contact"..msg.chat_id_,true,
-CZAR.."mute_location"..msg.chat_id_,true,
-CZAR.."mute_document"..msg.chat_id_,true,
-CZAR.."lock_link"..msg.chat_id_,true,
-CZAR.."lock_tag"..msg.chat_id_,true,
-CZAR.."lock_edit"..msg.chat_id_,true,
-CZAR.."lock_spam"..msg.chat_id_,true,
-CZAR.."lock_bots"..msg.chat_id_,true,
-CZAR.."lock_webpage"..msg.chat_id_,true,
-CZAR.."mute_video"..msg.chat_id_,true,
-CZAR.."mute_inline"..msg.chat_id_,true
+MOD.."lock_username"..msg.chat_id_,true,
+MOD.."mute_gif"..msg.chat_id_,true,
+MOD.."mute_photo"..msg.chat_id_,true,
+MOD.."mute_audio"..msg.chat_id_,true,
+MOD.."mute_voice"..msg.chat_id_,true,
+MOD.."mute_sticker"..msg.chat_id_,true,
+MOD.."mute_forward"..msg.chat_id_,true,
+MOD.."mute_contact"..msg.chat_id_,true,
+MOD.."mute_location"..msg.chat_id_,true,
+MOD.."mute_document"..msg.chat_id_,true,
+MOD.."lock_link"..msg.chat_id_,true,
+MOD.."lock_tag"..msg.chat_id_,true,
+MOD.."lock_edit"..msg.chat_id_,true,
+MOD.."lock_spam"..msg.chat_id_,true,
+MOD.."lock_bots"..msg.chat_id_,true,
+MOD.."lock_webpage"..msg.chat_id_,true,
+MOD.."mute_video"..msg.chat_id_,true,
+MOD.."mute_inline"..msg.chat_id_,true
 )
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الكل بنجاح   \n " ) 
 end,{msg=msg})
@@ -413,29 +413,29 @@ GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
 redis:del(
-CZAR.."lock_username"..msg.chat_id_,
-CZAR.."mute_gif"..msg.chat_id_,
-CZAR.."mute_photo"..msg.chat_id_,
-CZAR.."mute_audio"..msg.chat_id_,
-CZAR.."mute_voice"..msg.chat_id_,
-CZAR.."mute_sticker"..msg.chat_id_,
-CZAR.."mute_forward"..msg.chat_id_,
-CZAR.."mute_contact"..msg.chat_id_,
-CZAR.."mute_location"..msg.chat_id_,
-CZAR.."mute_document"..msg.chat_id_,
-CZAR.."lock_link"..msg.chat_id_,
-CZAR.."lock_tag"..msg.chat_id_,
-CZAR.."lock_edit"..msg.chat_id_,
-CZAR.."lock_spam"..msg.chat_id_,
-CZAR.."lock_bots"..msg.chat_id_,
-CZAR.."lock_webpage"..msg.chat_id_,
-CZAR.."mute_video"..msg.chat_id_,
-CZAR..":tqeed_video:"..msg.chat_id_,
-CZAR..":tqeed_photo:"..msg.chat_id_,
-CZAR..":tqeed_gif:"..msg.chat_id_,
-CZAR..":tqeed_fwd:"..msg.chat_id_,
-CZAR..":tqeed_link:"..msg.chat_id_,
-CZAR.."mute_inline"..msg.chat_id_
+MOD.."lock_username"..msg.chat_id_,
+MOD.."mute_gif"..msg.chat_id_,
+MOD.."mute_photo"..msg.chat_id_,
+MOD.."mute_audio"..msg.chat_id_,
+MOD.."mute_voice"..msg.chat_id_,
+MOD.."mute_sticker"..msg.chat_id_,
+MOD.."mute_forward"..msg.chat_id_,
+MOD.."mute_contact"..msg.chat_id_,
+MOD.."mute_location"..msg.chat_id_,
+MOD.."mute_document"..msg.chat_id_,
+MOD.."lock_link"..msg.chat_id_,
+MOD.."lock_tag"..msg.chat_id_,
+MOD.."lock_edit"..msg.chat_id_,
+MOD.."lock_spam"..msg.chat_id_,
+MOD.."lock_bots"..msg.chat_id_,
+MOD.."lock_webpage"..msg.chat_id_,
+MOD.."mute_video"..msg.chat_id_,
+MOD..":tqeed_video:"..msg.chat_id_,
+MOD..":tqeed_photo:"..msg.chat_id_,
+MOD..":tqeed_gif:"..msg.chat_id_,
+MOD..":tqeed_fwd:"..msg.chat_id_,
+MOD..":tqeed_link:"..msg.chat_id_,
+MOD.."mute_inline"..msg.chat_id_
 )
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الكل بنجاح   \n " ) 
 end,{msg=msg})
@@ -448,12 +448,12 @@ GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
 redis:mset(
-CZAR.."mute_gif"..msg.chat_id_,true,
-CZAR.."mute_photo"..msg.chat_id_,true,
-CZAR.."mute_audio"..msg.chat_id_,true,
-CZAR.."mute_voice"..msg.chat_id_,true,
-CZAR.."mute_sticker"..msg.chat_id_,true,
-CZAR.."mute_video"..msg.chat_id_,true
+MOD.."mute_gif"..msg.chat_id_,true,
+MOD.."mute_photo"..msg.chat_id_,true,
+MOD.."mute_audio"..msg.chat_id_,true,
+MOD.."mute_voice"..msg.chat_id_,true,
+MOD.."mute_sticker"..msg.chat_id_,true,
+MOD.."mute_video"..msg.chat_id_,true
 )
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الوسائط بنجاح   \n " ) 
 end,{msg=msg})
@@ -466,12 +466,12 @@ GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
 redis:del(
-CZAR.."mute_gif"..msg.chat_id_,
-CZAR.."mute_photo"..msg.chat_id_,
-CZAR.."mute_audio"..msg.chat_id_,
-CZAR.."mute_voice"..msg.chat_id_,
-CZAR.."mute_sticker"..msg.chat_id_,
-CZAR.."mute_video"..msg.chat_id_
+MOD.."mute_gif"..msg.chat_id_,
+MOD.."mute_photo"..msg.chat_id_,
+MOD.."mute_audio"..msg.chat_id_,
+MOD.."mute_voice"..msg.chat_id_,
+MOD.."mute_sticker"..msg.chat_id_,
+MOD.."mute_video"..msg.chat_id_
 )
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الوسائط بنجاح   \n " ) 
 end,{msg=msg})
@@ -484,11 +484,11 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR..":tqeed_video:"..msg.chat_id_) then
+if redis:get(MOD..":tqeed_video:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الفيديو بالتقييد    \n " )
 else
-redis:del(CZAR..":tqeed_video:"..msg.chat_id_)
-redis:set(CZAR..":tqeed_video:"..msg.chat_id_,true)
+redis:del(MOD..":tqeed_video:"..msg.chat_id_)
+redis:set(MOD..":tqeed_video:"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الفيديو بالتقييد بنجاح   \n " )    end
 end,{msg=msg})
 end
@@ -498,10 +498,10 @@ GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
 if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمنيه فقط  \n📛" end
-if not redis:get(CZAR..":tqeed_video:"..msg.chat_id_) then
+if not redis:get(MOD..":tqeed_video:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الفيديو بالتقييد    \n " )
 else 
-redis:del(CZAR..":tqeed_video:"..msg.chat_id_)
+redis:del(MOD..":tqeed_video:"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الفيديو بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -513,11 +513,11 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR..":tqeed_gif:"..msg.chat_id_) then
+if redis:get(MOD..":tqeed_gif:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل المتحركه بالتقييد    \n " )
 else
-redis:del(CZAR.."mute_gif"..msg.chat_id_)
-redis:set(CZAR..":tqeed_gif:"..msg.chat_id_,true)
+redis:del(MOD.."mute_gif"..msg.chat_id_)
+redis:set(MOD..":tqeed_gif:"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل المتحركه بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -528,10 +528,10 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR..":tqeed_gif:"..msg.chat_id_) then
+if not redis:get(MOD..":tqeed_gif:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح المتحركه بالتقييد    \n " )
 else 
-redis:del(CZAR..":tqeed_gif:"..msg.chat_id_)
+redis:del(MOD..":tqeed_gif:"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح المتحركه بالتقييد بنجاح   \n " )    end
 end,{msg=msg})
 end
@@ -542,11 +542,11 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR..":tqeed_fwd:"..msg.chat_id_) then
+if redis:get(MOD..":tqeed_fwd:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل التوجيه بالتقييد    \n " )
 else
-redis:del(CZAR.."mute_forward"..msg.chat_id_)
-redis:set(CZAR..":tqeed_fwd:"..msg.chat_id_,true)
+redis:del(MOD.."mute_forward"..msg.chat_id_)
+redis:set(MOD..":tqeed_fwd:"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل التوجيه بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -557,10 +557,10 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR..":tqeed_fwd:"..msg.chat_id_) then
+if not redis:get(MOD..":tqeed_fwd:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح التوجيه  بالتقييد    \n " )
 else 
-redis:del(CZAR..":tqeed_fwd:"..msg.chat_id_)
+redis:del(MOD..":tqeed_fwd:"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح التوجيه بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -572,10 +572,10 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR..":tqeed_link:"..msg.chat_id_) then
+if redis:get(MOD..":tqeed_link:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الروابط بالتقييد    \n " )
 else
-redis:set(CZAR..":tqeed_link:"..msg.chat_id_,true)
+redis:set(MOD..":tqeed_link:"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الروابط بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -586,10 +586,10 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR..":tqeed_link:"..msg.chat_id_) then
+if not redis:get(MOD..":tqeed_link:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الروابط بالتقييد    \n " )
 else 
-redis:del(CZAR..":tqeed_link:"..msg.chat_id_)
+redis:del(MOD..":tqeed_link:"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الروابط بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -601,10 +601,10 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR..":tqeed_photo:"..msg.chat_id_) then
+if redis:get(MOD..":tqeed_photo:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الصور بالتقييد    \n " )
 else
-redis:set(CZAR..":tqeed_photo:"..msg.chat_id_,true)
+redis:set(MOD..":tqeed_photo:"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الصور بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -615,10 +615,10 @@ if not msg.Admin then return "🚸*¦ * هذا الامر يخص الادمني�
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR..":tqeed_photo:"..msg.chat_id_) then
+if not redis:get(MOD..":tqeed_photo:"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الصور بالتقييد    \n " )
 else 
-redis:del(CZAR..":tqeed_photo:"..msg.chat_id_)
+redis:del(MOD..":tqeed_photo:"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الصور بالتقييد بنجاح   \n " )
 end
 end,{msg=msg})
@@ -629,10 +629,10 @@ if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_twasel") then
+if redis:get(MOD.."lock_twasel") then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل التواصل    \n " )
 else
-redis:set(CZAR.."lock_twasel",true)
+redis:set(MOD.."lock_twasel",true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل التواصل بنجاح   \n " )    end
 end,{msg=msg})
 end
@@ -642,10 +642,10 @@ if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_twasel") then
+if not redis:get(MOD.."lock_twasel") then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل التواصل    \n " )
 else 
-redis:del(CZAR.."lock_twasel")
+redis:del(MOD.."lock_twasel")
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل التواصل بنجاح   \n " )
 end
 end,{msg=msg})
@@ -658,9 +658,9 @@ if not msg.SudoBase then return "⌁︙ هذا الامر يخص المطور ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lockidedit") then 
+if redis:get(MOD.."lockidedit") then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل تعيين الايدي للمطور    \n " )
-else redis:set(CZAR.."lockidedit",true)
+else redis:set(MOD.."lockidedit",true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل تعيين الايدي للمطور  بنجاح   \n " )
 end
 end,{msg=msg})
@@ -671,10 +671,10 @@ if not msg.SudoBase then return "⌁︙ هذا الامر يخص المطور ا
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lockidedit") then 
+if not redis:get(MOD.."lockidedit") then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل تعيين الايدي للمطور    \n " )
 else
-redis:del(CZAR.."lockidedit") 
+redis:del(MOD.."lockidedit") 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل تعيين الايدي للمطور  بنجاح   \n " )
 end 
 end,{msg=msg})
@@ -687,10 +687,10 @@ if not msg.SudoBase then return "⌁︙ هذا الامر يخص المطور ف
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_brod") then
+if not redis:get(MOD.."lock_brod") then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل اذاعه المطورين    \n " )
 else
-redis:del(CZAR.."lock_brod")
+redis:del(MOD.."lock_brod")
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل اذاعه المطورين بنجاح   \n " )
 end
 end,{msg=msg})
@@ -700,10 +700,10 @@ if not msg.SudoBase then return "⌁︙ هذا الامر يخص المطور ف
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_brod") then
+if redis:get(MOD.."lock_brod") then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل اذاعه المطورين    \n " )
 else 
-redis:set(CZAR.."lock_brod",true)
+redis:set(MOD.."lock_brod",true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل اذاعه المطورين بنجاح   \n " )
 end
 end,{msg=msg})
@@ -715,10 +715,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."replay"..msg.chat_id_) then
+if not redis:get(MOD.."replay"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الردود    \n " )
 else
-redis:del(CZAR.."replay"..msg.chat_id_)
+redis:del(MOD.."replay"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الردود بنجاح   \n " )
 end
 end,{msg=msg})
@@ -729,10 +729,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."replay"..msg.chat_id_) then
+if redis:get(MOD.."replay"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الردود    \n " )
 else 
-redis:set(CZAR.."replay"..msg.chat_id_,true)
+redis:set(MOD.."replay"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الردود بنجاح   \n " )
 end
 end,{msg=msg})
@@ -744,10 +744,10 @@ if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_service") then
+if not redis:get(MOD.."lock_service") then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل نظام البوت خدمي    \n " ) 
 else
-redis:del(CZAR.."lock_service")
+redis:del(MOD.."lock_service")
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل نظام البوت خدمي بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -758,10 +758,10 @@ if not msg.SudoBase then return "🚸*¦ * هذا الامر يخص المطور
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_service") then
+if redis:get(MOD.."lock_service") then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل نظام البوت خدمي     " ) 
 else 
-redis:set(CZAR.."lock_service",true)
+redis:set(MOD.."lock_service",true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل نظام البوت خدمي بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -772,10 +772,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_mmno3"..msg.chat_id_) then
+if redis:get(MOD.."lock_mmno3"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الفشار    \n " ) 
 else
-redis:set(CZAR.."lock_mmno3"..msg.chat_id_,true)
+redis:set(MOD.."lock_mmno3"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الفشار بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -786,10 +786,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_mmno3"..msg.chat_id_) then
+if not redis:get(MOD.."lock_mmno3"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الفشار    \n " ) 
 else 
-redis:del(CZAR.."lock_mmno3"..msg.chat_id_)
+redis:del(MOD.."lock_mmno3"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الفشار بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -801,10 +801,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_pharsi"..msg.chat_id_) then
+if redis:get(MOD.."lock_pharsi"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الفارسيه    \n " ) 
 else
-redis:set(CZAR.."lock_pharsi"..msg.chat_id_,true)
+redis:set(MOD.."lock_pharsi"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الفارسيه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -815,10 +815,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_pharsi"..msg.chat_id_) then
+if not redis:get(MOD.."lock_pharsi"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الفارسيه    \n" ) 
 else 
-redis:del(CZAR.."lock_pharsi"..msg.chat_id_)
+redis:del(MOD.."lock_pharsi"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الفارسيه بنجاح    " ) 
 end
 end,{msg=msg})
@@ -830,10 +830,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_lang"..msg.chat_id_) then
+if redis:get(MOD.."lock_lang"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الانكليزيه    \n " ) 
 else
-redis:set(CZAR.."lock_lang"..msg.chat_id_,true)
+redis:set(MOD.."lock_lang"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الانكليزيه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -844,10 +844,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_lang"..msg.chat_id_) then
+if not redis:get(MOD.."lock_lang"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الانكليزيه    \n " ) 
 else 
-redis:del(CZAR.."lock_lang"..msg.chat_id_)
+redis:del(MOD.."lock_lang"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الانكليزيه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -859,10 +859,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_link"..msg.chat_id_) then
+if redis:get(MOD.."lock_link"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الروابط    \n " ) 
 else
-redis:set(CZAR.."lock_link"..msg.chat_id_,true)
+redis:set(MOD.."lock_link"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الروابط بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -873,10 +873,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_link"..msg.chat_id_) then
+if not redis:get(MOD.."lock_link"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الروابط    \n " ) 
 else 
-redis:del(CZAR.."lock_link"..msg.chat_id_)
+redis:del(MOD.."lock_link"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الروابط بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -888,10 +888,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_Add"..msg.chat_id_) then
+if redis:get(MOD.."lock_Add"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الاضافه    \n " ) 
 else
-redis:set(CZAR.."lock_Add"..msg.chat_id_,true)
+redis:set(MOD.."lock_Add"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الاضافه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -902,10 +902,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_Add"..msg.chat_id_) then
+if not redis:get(MOD.."lock_Add"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الاضافه    \n " ) 
 else 
-redis:del(CZAR.."lock_Add"..msg.chat_id_)
+redis:del(MOD.."lock_Add"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الاضافه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -917,10 +917,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_tag"..msg.chat_id_) then
+if redis:get(MOD.."lock_tag"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل التاك (#)    \n " ) 
 else
-redis:set(CZAR.."lock_tag"..msg.chat_id_,true)
+redis:set(MOD.."lock_tag"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل التاك (#) بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -932,10 +932,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_tag"..msg.chat_id_) then
+if not redis:get(MOD.."lock_tag"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح التاك (#)    \n " ) 
 else 
-redis:del(CZAR.."lock_tag"..msg.chat_id_)
+redis:del(MOD.."lock_tag"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح التاك (#) بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -947,10 +947,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_username"..msg.chat_id_) then
+if redis:get(MOD.."lock_username"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل المعرفات    \n " ) 
 else
-redis:set(CZAR.."lock_username"..msg.chat_id_,true)
+redis:set(MOD.."lock_username"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل المعرفات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -961,10 +961,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_username"..msg.chat_id_) then
+if not redis:get(MOD.."lock_username"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح المعرفات    \n " ) 
 else 
-redis:del(CZAR.."lock_username"..msg.chat_id_)
+redis:del(MOD.."lock_username"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح المعرفات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -976,10 +976,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_edit"..msg.chat_id_) then
+if redis:get(MOD.."lock_edit"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل التعديل    \n " ) 
 else
-redis:set(CZAR.."lock_edit"..msg.chat_id_,true)
+redis:set(MOD.."lock_edit"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل التعديل بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -990,10 +990,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_edit"..msg.chat_id_) then
+if not redis:get(MOD.."lock_edit"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح التعديل    \n " ) 
 else 
-redis:del(CZAR.."lock_edit"..msg.chat_id_)
+redis:del(MOD.."lock_edit"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح التعديل بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1005,10 +1005,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if   redis:get(CZAR.."lock_spam"..msg.chat_id_) then
+if   redis:get(MOD.."lock_spam"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الكلايش    \n " ) 
 else
-redis:set(CZAR.."lock_spam"..msg.chat_id_,true)
+redis:set(MOD.."lock_spam"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الكلايش بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1019,10 +1019,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_spam"..msg.chat_id_) then
+if not redis:get(MOD.."lock_spam"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الكلايش    \n " ) 
 else 
-redis:del(CZAR.."lock_spam"..msg.chat_id_)
+redis:del(MOD.."lock_spam"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الكلايش بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1034,10 +1034,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_flood"..msg.chat_id_) then
+if redis:get(MOD.."lock_flood"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل التكرار    \n " ) 
 else
-redis:set(CZAR.."lock_flood"..msg.chat_id_,true)
+redis:set(MOD.."lock_flood"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل التكرار بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1048,10 +1048,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_flood"..msg.chat_id_) then
+if not redis:get(MOD.."lock_flood"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح التكرار    \n " ) 
 else 
-redis:del(CZAR.."lock_flood"..msg.chat_id_)
+redis:del(MOD.."lock_flood"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح التكرار بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1063,10 +1063,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_bots"..msg.chat_id_) then
+if redis:get(MOD.."lock_bots"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل البوتات    \n " ) 
 else
-redis:set(CZAR.."lock_bots"..msg.chat_id_,true)
+redis:set(MOD.."lock_bots"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل البوتات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1077,11 +1077,11 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_bots"..msg.chat_id_) then
+if not redis:get(MOD.."lock_bots"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح البوتات    \n " ) 
 else 
-redis:del(CZAR.."lock_bots_by_kick"..msg.chat_id_)
-redis:del(CZAR.."lock_bots"..msg.chat_id_)
+redis:del(MOD.."lock_bots_by_kick"..msg.chat_id_)
+redis:del(MOD.."lock_bots"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح البوتات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1093,10 +1093,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_join"..msg.chat_id_) then
+if redis:get(MOD.."lock_join"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الاضافه    \n " ) 
 else
-redis:set(CZAR.."lock_join"..msg.chat_id_,true)
+redis:set(MOD.."lock_join"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الاضافه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1107,10 +1107,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_join"..msg.chat_id_) then
+if not redis:get(MOD.."lock_join"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الاضافه    \n " ) 
 else 
-redis:del(CZAR.."lock_join"..msg.chat_id_)
+redis:del(MOD.."lock_join"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الاضافه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1122,10 +1122,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_markdown"..msg.chat_id_) then
+if redis:get(MOD.."lock_markdown"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الماركدوان    \n " ) 
 else
-redis:set(CZAR.."lock_markdown"..msg.chat_id_,true)
+redis:set(MOD.."lock_markdown"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الماركدوان بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1136,10 +1136,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_markdown"..msg.chat_id_) then
+if not redis:get(MOD.."lock_markdown"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الماركدوان    \n " ) 
 else 
-redis:del(CZAR.."lock_markdown"..msg.chat_id_)
+redis:del(MOD.."lock_markdown"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الماركدوان بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1151,10 +1151,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_webpage"..msg.chat_id_) then
+if redis:get(MOD.."lock_webpage"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الويب    \n " ) 
 else
-redis:set(CZAR.."lock_webpage"..msg.chat_id_,true)
+redis:set(MOD.."lock_webpage"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الويب بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1165,10 +1165,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_webpage"..msg.chat_id_) then
+if not redis:get(MOD.."lock_webpage"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الويب    \n " ) 
 else 
-redis:del(CZAR.."lock_webpage"..msg.chat_id_)
+redis:del(MOD.."lock_webpage"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الويب بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1179,10 +1179,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_gif"..msg.chat_id_) then
+if redis:get(MOD.."mute_gif"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل المتحركه    \n " ) 
 else
-redis:set(CZAR.."mute_gif"..msg.chat_id_,true)
+redis:set(MOD.."mute_gif"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل المتحركه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1193,10 +1193,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_gif"..msg.chat_id_) then
+if not redis:get(MOD.."mute_gif"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح المتحركه    \n " ) 
 else 
-redis:del(CZAR.."mute_gif"..msg.chat_id_)
+redis:del(MOD.."mute_gif"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح المتحركه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1207,7 +1207,7 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_game"..msg.chat_id_) then
+if redis:get(MOD.."mute_game"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الالعاب    \n " ) 
 else
 redis:set("mute_game"..msg.chat_id_,true)
@@ -1221,10 +1221,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_game"..msg.chat_id_) then
+if not redis:get(MOD.."mute_game"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الالعاب    \n " ) 
 else 
-redis:del(CZAR.."mute_game"..msg.chat_id_)
+redis:del(MOD.."mute_game"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الالعاب بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1235,10 +1235,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_inline"..msg.chat_id_) then
+if redis:get(MOD.."mute_inline"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الانلاين    \n " ) 
 else
-redis:set(CZAR.."mute_inline"..msg.chat_id_,true)
+redis:set(MOD.."mute_inline"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الانلاين بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1249,10 +1249,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_inline"..msg.chat_id_) then
+if not redis:get(MOD.."mute_inline"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الانلاين    \n " ) 
 else 
-redis:del(CZAR.."mute_inline"..msg.chat_id_)
+redis:del(MOD.."mute_inline"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الانلاين بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1263,10 +1263,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_text"..msg.chat_id_) then
+if redis:get(MOD.."mute_text"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الدردشه    \n " ) 
 else
-redis:set(CZAR.."mute_text"..msg.chat_id_,true)
+redis:set(MOD.."mute_text"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الدردشه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1277,10 +1277,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_text"..msg.chat_id_) then
+if not redis:get(MOD.."mute_text"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الدردشه    \n " ) 
 else 
-redis:del(CZAR.."mute_text"..msg.chat_id_)
+redis:del(MOD.."mute_text"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الدردشه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1291,10 +1291,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_photo"..msg.chat_id_) then
+if redis:get(MOD.."mute_photo"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الصور    \n " ) 
 else
-redis:set(CZAR.."mute_photo"..msg.chat_id_,true)
+redis:set(MOD.."mute_photo"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الصور بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1306,10 +1306,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_photo"..msg.chat_id_)then
+if not redis:get(MOD.."mute_photo"..msg.chat_id_)then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الصور    \n " ) 
 else 
-redis:del(CZAR.."mute_photo"..msg.chat_id_)
+redis:del(MOD.."mute_photo"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الصور بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1322,10 +1322,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_video"..msg.chat_id_) then
+if redis:get(MOD.."mute_video"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الفيديو    \n " ) 
 else
-redis:set(CZAR.."mute_video"..msg.chat_id_,true)
+redis:set(MOD.."mute_video"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الفيديو بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1336,10 +1336,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_video"..msg.chat_id_) then
+if not redis:get(MOD.."mute_video"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الفيديو    \n " ) 
 else 
-redis:del(CZAR.."mute_video"..msg.chat_id_)
+redis:del(MOD.."mute_video"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الفيديو بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1350,10 +1350,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_audio"..msg.chat_id_) then
+if redis:get(MOD.."mute_audio"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الصوت    \n " ) 
 else
-redis:set(CZAR.."mute_audio"..msg.chat_id_,true)
+redis:set(MOD.."mute_audio"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الحظرالصوت بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1364,10 +1364,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_audio"..msg.chat_id_) then
+if not redis:get(MOD.."mute_audio"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الصوت    \n " ) 
 else 
-redis:del(CZAR.."mute_audio"..msg.chat_id_)
+redis:del(MOD.."mute_audio"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الصوت بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1378,10 +1378,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_voice"..msg.chat_id_) then
+if redis:get(MOD.."mute_voice"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل البصمات    \n " ) 
 else
-redis:set(CZAR.."mute_voice"..msg.chat_id_,true)
+redis:set(MOD.."mute_voice"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل البصمات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1392,10 +1392,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_voice"..msg.chat_id_) then
+if not redis:get(MOD.."mute_voice"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح البصمات    \n " ) 
 else 
-redis:del(CZAR.."mute_voice"..msg.chat_id_)
+redis:del(MOD.."mute_voice"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح البصمات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1408,10 +1408,10 @@ GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
 
-if   redis:get(CZAR.."mute_sticker"..msg.chat_id_) then
+if   redis:get(MOD.."mute_sticker"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الملصقات    \n " ) 
 else
-redis:set(CZAR.."mute_sticker"..msg.chat_id_,true)
+redis:set(MOD.."mute_sticker"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الملصقات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1422,10 +1422,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_sticker"..msg.chat_id_) then
+if not redis:get(MOD.."mute_sticker"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الملصقات    \n " ) 
 else 
-redis:del(CZAR.."mute_sticker"..msg.chat_id_)
+redis:del(MOD.."mute_sticker"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الملصقات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1436,10 +1436,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_contact"..msg.chat_id_) then
+if redis:get(MOD.."mute_contact"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الجهات    \n " ) 
 else
-redis:set(CZAR.."mute_contact"..msg.chat_id_,true)
+redis:set(MOD.."mute_contact"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الجهات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1450,10 +1450,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_contact"..msg.chat_id_) then
+if not redis:get(MOD.."mute_contact"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الجهات    \n " ) 
 else 
-redis:del(CZAR.."mute_contact"..msg.chat_id_)
+redis:del(MOD.."mute_contact"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الجهات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1464,10 +1464,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_forward"..msg.chat_id_) then
+if redis:get(MOD.."mute_forward"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل التوجيه    \n " ) 
 else
-redis:set(CZAR.."mute_forward"..msg.chat_id_,true)
+redis:set(MOD.."mute_forward"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل التوجيه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1478,10 +1478,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_forward"..msg.chat_id_) then
+if not redis:get(MOD.."mute_forward"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح التوجيه    \n " ) 
 else 
-redis:del(CZAR.."mute_forward"..msg.chat_id_)
+redis:del(MOD.."mute_forward"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح التوجيه بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1492,10 +1492,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_location"..msg.chat_id_) then
+if redis:get(MOD.."mute_location"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الموقع    \n " ) 
 else
-redis:set(CZAR.."mute_location"..msg.chat_id_,true)
+redis:set(MOD.."mute_location"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الموقع بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1506,10 +1506,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_location"..msg.chat_id_) then
+if not redis:get(MOD.."mute_location"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الموقع    \n " ) 
 else 
-redis:del(CZAR.."mute_location"..msg.chat_id_)
+redis:del(MOD.."mute_location"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الموقع بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1520,10 +1520,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_document"..msg.chat_id_) then
+if redis:get(MOD.."mute_document"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الملفات    \n " ) 
 else
-redis:set(CZAR.."mute_document"..msg.chat_id_,true)
+redis:set(MOD.."mute_document"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الملفات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1534,10 +1534,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_document"..msg.chat_id_) then
+if not redis:get(MOD.."mute_document"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الملفات    \n " ) 
 else 
-redis:del(CZAR.."mute_document"..msg.chat_id_)
+redis:del(MOD.."mute_document"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الملفات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1548,10 +1548,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_tgservice"..msg.chat_id_) then
+if redis:get(MOD.."mute_tgservice"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الاشعارات    \n " ) 
 else
-redis:set(CZAR.."mute_tgservice"..msg.chat_id_,true)
+redis:set(MOD.."mute_tgservice"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الاشعارات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1562,10 +1562,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_tgservice"..msg.chat_id_) then
+if not redis:get(MOD.."mute_tgservice"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الاشعارات    \n " ) 
 else 
-redis:del(CZAR.."mute_tgservice"..msg.chat_id_)
+redis:del(MOD.."mute_tgservice"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الاشعارات بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1577,10 +1577,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."mute_keyboard"..msg.chat_id_) then
+if redis:get(MOD.."mute_keyboard"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل الكيبورد    \n " ) 
 else
-redis:set(CZAR.."mute_keyboard"..msg.chat_id_,true)
+redis:set(MOD.."mute_keyboard"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل الكيبورد بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1591,10 +1591,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."mute_keyboard"..msg.chat_id_) then
+if not redis:get(MOD.."mute_keyboard"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح الكيبورد    \n " ) 
 else 
-redis:del(CZAR.."mute_keyboard"..msg.chat_id_)
+redis:del(MOD.."mute_keyboard"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح الكيبورد بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1606,11 +1606,11 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_bots_by_kick"..msg.chat_id_) then
+if redis:get(MOD.."lock_bots_by_kick"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل البوتات بالطرد    \n " ) 
 else
-redis:set(CZAR.."lock_bots"..msg.chat_id_,true)
-redis:set(CZAR.."lock_bots_by_kick"..msg.chat_id_,true)
+redis:set(MOD.."lock_bots"..msg.chat_id_,true)
+redis:set(MOD.."lock_bots_by_kick"..msg.chat_id_,true)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل البوتات بالطرد بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1621,10 +1621,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_bots_by_kick"..msg.chat_id_) then
+if not redis:get(MOD.."lock_bots_by_kick"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح البوتات بالطرد    \n " ) 
 else 
-redis:del(CZAR.."lock_bots_by_kick"..msg.chat_id_)
+redis:del(MOD.."lock_bots_by_kick"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح البوتات بالطرد بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1635,10 +1635,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if redis:get(CZAR.."lock_pin"..msg.chat_id_) then
+if redis:get(MOD.."lock_pin"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد قفل التثبيت    \n " ) 
 else
-redis:set(CZAR.."lock_pin"..msg.chat_id_,true) 
+redis:set(MOD.."lock_pin"..msg.chat_id_,true) 
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم قفل التثبيت بنجاح   \n " ) 
 end
 end,{msg=msg})
@@ -1649,10 +1649,10 @@ if not msg.Admin then return "⌁︙ هذا الامر يخص الادمنيه �
 GetUserID(msg.sender_user_id_,function(arg,data)
 msg = arg.msg 
 local NameUser   = Hyper_Link_Name(data)
-if not redis:get(CZAR.."lock_pin"..msg.chat_id_) then
+if not redis:get(MOD.."lock_pin"..msg.chat_id_) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد فتح التثبيت    \n " ) 
 else 
-redis:del(CZAR.."lock_pin"..msg.chat_id_)
+redis:del(MOD.."lock_pin"..msg.chat_id_)
 return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم فتح التثبيت بنجاح   \n " ) 
 end
 end,{msg=msg})
