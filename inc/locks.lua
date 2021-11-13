@@ -240,33 +240,7 @@ end
 end,{msg=msg})
 end 
 
-------Lock id photo ------------------- 
-function unlock_idphoto(msg)
-if not msg.Director  then return "⌁︙ هذا الامر يخص {المدير,المنشئ,المطور} فقط  " end
-GetUserID(msg.sender_user_id_,function(arg,data)
-msg = arg.msg 
-local NameUser   = Hyper_Link_Name(data)
-if redis:get(MOD.."idphoto"..msg.chat_id_) then 
-return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تفعيل الايدي بالصوره    \n " ) 
-else redis:set(MOD.."idphoto"..msg.chat_id_,true)
-return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تفعيل الايدي بالصوره بنجاح   \n " ) 
-end
-end,{msg=msg})
-end
 
-function lock_idphoto(msg)
-if not msg.Director  then return "⌁︙ هذا الامر يخص {المدير,المنشئ,المطور} فقط  " end
-GetUserID(msg.sender_user_id_,function(arg,data)
-msg = arg.msg 
-local NameUser   = Hyper_Link_Name(data)
-if not redis:get(MOD.."idphoto"..msg.chat_id_) then 
-return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم بالتأكيد تعطيل الايدي بالصوره    \n " ) 
-else
-redis:del(MOD.."idphoto"..msg.chat_id_) 
-return sendMsg(msg.chat_id_,msg.id_,"⌁︙ بواسطه ↫「 "..NameUser.." 」\n⌁︙ تم تعطيل الايدي بالصوره بنجاح   \n " ) 
-end 
-end,{msg=msg})
-end
 ------Lock link Group ------------------- 
 function unlock_linkk(msg)
 if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,المنشئ} فقط  " end
