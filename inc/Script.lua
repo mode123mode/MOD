@@ -88,24 +88,9 @@ return https.request(url)
 end
 
 
-function lock_photos(msg)
-if not msg.Director then 
-return "[+] هذا الامر يخص {المدير,المنشئ,المطور} فقط"
-end
-redis:set(MOD.."getidstatus"..msg.chat_id_, "Simple")
-return  "[+] أهلا عزيزي "..msg.TheRankCmd.."\n[+] تم تعطيل الايدي بالصوره\n" 
-end 
-function unlock_photos(msg)
-if not msg.Director then
-return "[+] هذا الامر يخص {المدير,المنشئ,المطور} فقط "
-end
-redis:set(MOD.."getidstatus"..msg.chat_id_, "Photo")
-return  "[+] أهلا عزيزي "..msg.TheRankCmd.."\n[+] تم تفعيل الايدي بالصوره" 
-end
-function cmds_on(msg)
-if not msg.Creator then return "[+] هذا الامر يخص {المنشئ,المطور} فقط"
-end
-end
+
+
+
 
 
 
@@ -136,9 +121,6 @@ return true
 end
 end
 
-
-
-
 if msg.forward_info_ then return false end
 
 
@@ -149,11 +131,7 @@ or redis:get(MOD..":Witting_AmrDel:"..msg.chat_id_..msg.sender_user_id_)
 or redis:get(MOD..":firstAmrOld:"..msg.chat_id_..msg.sender_user_id_)) and MsgText[1] ~= "الغاء" then 
 return false end 
 
-if msg.type ~= 'pv' then
-
-
-
- if MsgText[1] == "تفعيل" and not MsgText[2] then
+if msg.type ~= 'pv' then if MsgText[1] == "تفعيل" and not MsgText[2] then
 return modadd(msg)  
 end
 
@@ -173,99 +151,86 @@ end
 
 if msg.type ~= 'pv' and msg.GroupActive then 
 
-if MsgText[1] == "id" or MsgText[1]:lower() == "ايدي" and is_JoinChannel(msg) then 
-if not redis:get(MOD.."lock_id"..msg.chat_id_) then
-return sendMsg(msg.chat_id_,msg.id_,"❂*╿* أهلا عزيزي "..msg.TheRankCmd.."\n❂*╽* الايدي معطل ")
-end
+if MsgText[1] == "id" or MsgText[1]:lower() == "ايدي" and is_JoinChannel(msg) then
 if not MsgText[2] and not msg.reply_id then
-if not redis:get(MOD..'Times:'..msg.sender_user_id_) then
-redis:setex(MOD..'Times:'..msg.sender_user_id_,1,true)
 if redis:get(MOD..'lock_id'..msg.chat_id_) then
-local msgs = redis:get(MOD..'msgs:'..msg.sender_user_id_..':'..msg.chat_id_) or 1
+
 GetUserID(msg.sender_user_id_,function(arg,data)
-if data.username_ then UserNameID = "@"..data.username_.."" else UserNameID = "" end
-local points = redis:get(MOD..':User_Points:'..msg.chat_id_..msg.sender_user_id_)
-if points and points ~= "0" then
-nko = points
+
+local msgs = redis:get(MOD..'msgs:'..msg.sender_user_id_..':'..msg.chat_id_) or 1
+if data.username_ then UserNameID = "⌁︙ مـعرفك •⊱ @"..data.username_.." ⊰•\n" else UserNameID = "" end
+if data.username_ then UserNameID1 = "@"..data.username_ else UserNameID1 = "لا يوجد" end
+if data.last_name_ then Name = data.first_name_ .." "..data.last_name_ else Name = data.first_name_ end
+local Namei = FlterName(data,20)
+if data.status_.ID == "UserStatusEmpty" then
+sendMsg(arg.chat_id_,data.id_,'⌁︙ لا يمكنني عرض صورة بروفايلك لانك قمت بحظر البوت ... !\n\n')
 else
-nko = '0'
+
+GetPhotoUser(data.id_,function(arg,data)
+local edited = (redis:get(MOD..':edited:'..arg.chat_id_..':'..arg.sender_user_id_) or 0)
+
+local KleshaID = '⌁︙ أســمـك •⊱ { '..arg.Namei..' } ⊰•\n'
+..'⌁︙ ايديــك •⊱ {'..arg.sender_user_id_..'} ⊰•\n'
+..arg.UserNameID
+..'⌁︙ رتبتـــك •⊱ '..arg.TheRank..' ⊰•\n'
+..'⭐️︙ تفاعـلك •⊱ '..Get_Ttl(arg.msgs)..'⊰•\n'
+..'⌁︙ رسائلك •⊱ {'..arg.msgs..'} ⊰•\n➖'
+local Kleshaidinfo = redis:get(MOD..":infoiduser_public:"..arg.chat_id_) or redis:get(MOD..":infoiduser")  
+
+if Kleshaidinfo then 
+local points = redis:get(MOD..':User_Points:'..arg.chat_id_..arg.sender_user_id_) or 0
+KleshaID = Kleshaidinfo:gsub("{الاسم}",arg.Namei)
+KleshaID = KleshaID:gsub("{الايدي}",arg.sender_user_id_)
+KleshaID = KleshaID:gsub("{المعرف}",arg.UserNameID1)
+KleshaID = KleshaID:gsub("{الرتبه}",arg.TheRank)
+KleshaID = KleshaID:gsub("{التفاعل}",Get_Ttl(arg.msgs))
+KleshaID = KleshaID:gsub("{الرسائل}",arg.msgs)
+KleshaID = KleshaID:gsub("{التعديل}",edited)
+KleshaID = KleshaID:gsub("{النقاط}",points)
+KleshaID = KleshaID:gsub("{البوت}",redis:get(MOD..':NameBot:'))
+KleshaID = KleshaID:gsub("{المطور}",SUDO_USER)
 end
-local infouser = https.request("https://api.telegram.org/bot"..Token.."/getChat?chat_id="..msg.sender_user_id_)
-local info_ = JSON.decode(infouser)
-if info_.result.bio then
-biouser = info_.result.bio
+if redis:get(MOD.."idphoto"..msg.chat_id_) then
+if data.photos_ and data.photos_[0] then 
+sendPhoto(arg.chat_id_,arg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,KleshaID,dl_cb,nil)
 else
-biouser = 'لا يوجد '
+sendMsg(arg.chat_id_,arg.id_,'⌁︙ لا يوجد صوره في بروفايلك ... !\n\n'..Flter_Markdown(KleshaID))
 end
-local rfih = (redis:get(MOD..':edited:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
-local NumGha = (redis:get(MOD..':adduser:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
-local Namei = FlterName(data.first_name_..' '..(data.last_name_ or ""),20)
-GetPhotoUser(msg.sender_user_id_,function(arg, data)
-if redis:get(MOD.."getidstatus"..msg.chat_id_) == "Photo" then
-	if data.photos_[0] then 
-		ali = {'شهل صورة😍😌','لا قيمه للقمر امام وجهك🌚🥀','خليني احبك🙈❤️','ببكن خاص 🌚😹','نكبل 🙈♥','منور اليوم 😻','فديت الحلو🌚😹','شهل عسل ،₍🍯😻⁾ ','كلي يا حلو منين الله جابك🙈❤️','يهلا بلعافيه😍','مارتاحلك😐','تحبني؟🙈',
-		}
-		ssssys = ali[math.random(#ali)]
-		if not redis:get("KLISH:ID") then
-		sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,'❂╿'..ssssys..'\n❂│ايديـك ❪ '..msg.sender_user_id_..' ❫\n❂│معرفـك ❪ '..UserNameID..' ❫\n❂│رتبتـك ❪ '..msg.TheRank..' ❫\n❂│تفاعلك ❪ '..Get_Ttl(msgs)..' ❫\n❂│رسائلك ❪ '..msgs..' ❫\n❂│سحكاتـك ❪ '..rfih..' ❫\n'..biouser..' ',dl_cb,nil)
-		else
-		Text = redis:get("KLISH:ID")
-		Text = Text:gsub('IDGET',msg.sender_user_id_)
-		Text = Text:gsub('USERGET',UserNameID)
-		Text = Text:gsub('RTBGET',msg.TheRank)
-		Text = Text:gsub('TFGET',Get_Ttl(msgs))
-		Text = Text:gsub('MSGGET',msgs)
-		Text = Text:gsub('edited',rfih)
-		Text = Text:gsub('adduser',NumGha)
-		Text = Text:gsub('User_Points',nko)
-		sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,"❂│"..ssssys.."\n"..Text.."",dl_cb,nil)
-		end
-	else
-		if not redis:get("KLISH:ID") then
-		sendMsg(msg.chat_id_,msg.id_,'❂│لا يمكنني عرض صورتك لانك قمت بحظر البوت او انك لاتملك صوره في بروفيلك ...!\n❂╿معرفـك ['..UserNameID..']\n❂│ايديـك ❪ '..msg.sender_user_id_..' ❫\n❂│رتبتـك ❪ '..msg.TheRank..' ❫\n❂│تفاعلك ❪ '..Get_Ttl(msgs)..' ❫\n❂│رسائلك ❪ '..msgs..' ❫\n❂│سحكاتـك ❪ '..rfih..' ❫\n❂│الـجـهـات ❪ '..NumGha..' ❫\n❂╽نقاطك ❪ '..nko..' ❫\n')
-		else
-		Text = redis:get("KLISH:ID")
-		Text = Text:gsub('IDGET',msg.sender_user_id_)
-		Text = Text:gsub('USERGET',UserNameID)
-		Text = Text:gsub('RTBGET',msg.TheRank)
-		Text = Text:gsub('TFGET',Get_Ttl(msgs))
-		Text = Text:gsub('MSGGET',msgs)
-		Text = Text:gsub('edited',rfih)
-		Text = Text:gsub('adduser',NumGha)
-		Text = Text:gsub('User_Points',nko)
-		sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
-		end
-	end
 else
-	if redis:get("KLISH:ID") then
-		Text = redis:get("KLISH:ID")
-		Text = Text:gsub('IDGET',msg.sender_user_id_)
-		Text = Text:gsub('USERGET',UserNameID)
-		Text = Text:gsub('RTBGET',msg.TheRank)
-		Text = Text:gsub('TFGET',Get_Ttl(msgs))
-		Text = Text:gsub('MSGGET',msgs)
-		Text = Text:gsub('edited',rfih)
-		Text = Text:gsub('adduser',NumGha)
-		Text = Text:gsub('User_Points',nko)
-		sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
-		else
-		sendMsg(msg.chat_id_,msg.id_,'❂│الايدي بالصوره معطل \n❂╿معرفـك ['..UserNameID..']\n❂│ايديـك ❪ '..msg.sender_user_id_..' ❫\n❂│رتبتـك ❪ '..msg.TheRank..' ❫\n❂│تفاعلك ❪ '..Get_Ttl(msgs)..' ❫\n❂│رسائلك ❪ '..msgs..' ❫\n❂│سحكاتـك ❪ '..rfih..' ❫\n❂│الـجـهـات ❪ '..NumGha..' ❫\n❂╽نقاطك ❪ '..nko..' ❫\n')
-		end
+sendMsg(arg.chat_id_,arg.id_,Flter_Markdown(KleshaID))
 end
 
-end) 
-end ,nil)
+end,{chat_id_=arg.chat_id_,id_=arg.id_,TheRank=arg.TheRank,sender_user_id_=data.id_,msgs=msgs,Namei=Namei,UserNameID=UserNameID,UserNameID1=UserNameID1})
+
+
 end
-return false
-else
-sendMsg(msg.chat_id_,msg.id_,'')
+
+end,{chat_id_=msg.chat_id_,id_=msg.id_,TheRank=msg.TheRank})
+
 end
 end
+
+
+
+
 if msg.reply_id and not MsgText[2] then
-GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="iduser"})
+GetMsgInfo(msg.chat_id_,msg.reply_id,function(arg,data)
+if not data.sender_user_id_ then return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* عذرا هذا العضو ليس موجود ضمن المجموعات \n❕") end
+local UserID = data.sender_user_id_
+GetUserID(UserID,function(arg,data)
+USERNAME = ResolveUserName(data)
+USERNAME = USERNAME:gsub([[\_]],"_")
+USERCAR = utf8.len(USERNAME) 
+SendMention(arg.ChatID,arg.UserID,arg.MsgID,"🧟‍♂︙ آضـغط على آلآيدي ليتم آلنسـخ\n\n "..USERNAME.." ~⪼ { "..arg.UserID.." }",37,USERCAR)
+end,{ChatID=arg.ChatID,UserID=UserID,MsgID=arg.MsgID})
+end,{ChatID=msg.chat_id_,MsgID=msg.id_})
 elseif MsgText[2] and MsgText[2]:match('@[%a%d_]+') then
-GetUserName(MsgText[2],action_by_username,{msg=msg,cmd="iduser"})
-return false
+GetUserName(MsgText[2],function(arg,data)
+if not data.id_ then return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لآ يوجد عضـو بهہ‌‏ذآ آلمـعرف \n❕") end 
+local UserID = data.id_
+UserName = Flter_Markdown(arg.UserName)
+sendMsg(arg.ChatID,arg.MsgID,"🧟‍♂*︙* آضـغط على آلآيدي ليتم آلنسـخ\n\n "..UserName.." ~⪼ ( `"..UserID.."` )")
+end,{ChatID=msg.chat_id_,MsgID=msg.id_,UserName=MsgText[2]})
 end 
 return false
 end
@@ -2194,12 +2159,6 @@ elseif tonumber(check_time) > 31536000 then
 remained_expire = '💳︙ `باقي من الاشتراك ` » » * \n ⌁︙  '..year..'* سنه و *'..month..'* شهر و *'..day..'* يوم و *'..hours..'* ساعه و *'..min..'* دقيقه و *'..sec..'* ثانيه' end
 return remained_expire
 end
-if MsgText[1] == "تفعيل الايدي بالصوره" and not MsgText[2] and is_JoinChannel(msg) then 
-return unlock_photos(msg)  
-end
-if MsgText[1] == "تعطيل الايدي بالصوره" and not MsgText[2] and is_JoinChannel(msg) then 
-return lock_photos(msg) 
-end
 
 if MsgText[1] == "الرتبه" and not MsgText[2] and msg.reply_id then 
 GetMsgInfo(msg.chat_id_,msg.reply_id,function(arg,data)
@@ -2321,7 +2280,7 @@ if MsgText[1] == "تفعيل الردود" 	then return unlock_replay(msg) end
 if MsgText[1] == "تفعيل الايدي" 	then return unlock_ID(msg) end
 if MsgText[1] == "تفعيل الترحيب" 	then return unlock_Welcome(msg) end
 if MsgText[1] == "تفعيل التحذير" 	then return unlock_waring(msg) end 
-if MsgText[1] == "تفعيل الايدي بدنبنبننلالصوره" 	then return unlock_photos(msg) end 
+if MsgText[1] == "تفعيل الايدي بالصوره" 	then return unlock_idphoto(msg) end 
 if MsgText[1] == "تفعيل الحمايه" 	then return unlock_AntiEdit(msg) end 
 if MsgText[1] == "تفعيل المغادره" 	then return unlock_leftgroup(msg) end 
 if MsgText[1] == "تفعيل الحظر" 	then return unlock_KickBan(msg) end 
@@ -2337,7 +2296,7 @@ if MsgText[1] == "تعطيل الردود" 	then return lock_replay(msg) end
 if MsgText[1] == "تعطيل الايدي" 	then return lock_ID(msg) end
 if MsgText[1] == "تعطيل الترحيب" 	then return lock_Welcome(msg) end
 if MsgText[1] == "تعطيل التحذير" 	then return lock_waring(msg) end
-if MsgText[1] == "تعطيل الايدي لنلمبالصوره" 	then return lock_photos(msg) end
+if MsgText[1] == "تعطيل الايدي بالصوره" 	then return lock_idphoto(msg) end
 if MsgText[1] == "تعطيل الحمايه" 	then return lock_AntiEdit(msg) end
 if MsgText[1] == "تعطيل المغادره" 	then return lock_leftgroup(msg) end 
 if MsgText[1] == "تعطيل الحظر" 	then return lock_KickBan(msg) end 
@@ -5388,7 +5347,8 @@ end
 
 
 
-if not msg.Admin and not msg.Special and not msg.OurBot then -- للاعضاء فقط  
+if not msg.Admin and not msg.Special then -- للاعضاء فقط  
+
 if not msg.forward_info_ and msg.content_.ID ~= "MessagePhoto" and redis:get(MOD..'lock_flood'..msg.chat_id_)  then
 local msgs = (redis:get(MOD..'user:'..msg.sender_user_id_..':msgs') or 0)
 local NUM_MSG_MOD = (redis:get(MOD..'num_msg_MOD'..msg.chat_id_) or 5)
@@ -6136,11 +6096,132 @@ local lovm = {
 "ولي ماحبك/ج 🙊💔",
 }
 local song = {
-"عمي يبو البار 🤓☝🏿️ \nصبلي لبلبي ترى اني سكران 😌 \n وصاير عصبي 😠 \nانه وياج يم شامه 😉 \nوانه ويــــا�� يم شامه  شد شد  👏🏿👏🏿 \nعدكم سطح وعدنه سطح 😁 \n نتغازل لحد الصبح 😉 \n انه وياج يم شامه 😍 \n وانه وياج فخريه وانه وياج حمديه 😂🖖🏿\n ",
-"اي مو كدامك مغني قديم 😒🎋 هوه ﴿↜ انـِۨـۛـِۨـۛـِۨيـُِـٌِہۧۥۛ ֆᵛ͢ᵎᵖ ⌯﴾❥  ربي كامز و تكلي غنيلي 🙄😒🕷 آإرۈحُـ✯ـہ✟  😴أنــ💤ــااااام😴  اشرف تالي وكت يردوني اغني 😒☹️🚶","لا تظربني لا تظرب 💃💃 كسرت الخيزارانه💃🎋 صارلي سنه وست اشهر💃💃 من ظربتك وجعانه🤒😹",
-"موجوع كلبي😔والتعب بية☹️من اباوع على روحي😢ينكسر كلبي عليه😭",
-"ايامي وياها👫اتمنا انساها😔متندم اني حيل😞يم غيري هيه💃تضحك😂عليه😔مقهور انام الليل😢كاعد امسح بل رسائل✉️وجان اشوف كل رسايلها📩وبجيت هوايه😭شفت احبك😍واني من دونك اموت😱وشفت واحد 🚶صار هسه وياية👬اني رايدها عمر عمر تعرفني كل زين🙈 وماردت لا مصلحة ولاغايه😕والله مافد يوم بايسها💋خاف تطلع⌁البوسه💋وتجيها حجايه😔️",
-"😔صوتي بعد مت سمعه✋يال رايح بلا رجعة🚶بزودك نزلت الدمعة ذاك اليوم☝️يال حبيتلك ثاني✌روح وياه وضل عاني😞يوم اسود علية اني🌚 ذاك اليوم☝️تباها بروحك واضحك😂لان بجيتلي عيني😢😭 وافراح يابعد روحي😌خل الحركة تجويني😔🔥صوتي بعد متسمعة⌁✋",
+"لو الشخص اللي تحبه قال بدخل حساباتك بتعطيه ولا بترفض؟",
+"كم مرة قدت سياراتك بدون حزام أمان؟",
+"اغرب شي سويته ؟",
+"ما هي الفرصة التي غيرت حياتك؟",
+"ما هو الشيء الذي لم تستطع تحقيقه بأي شكل؟",
+"قوة الصداقة بشو بتتكون؟",
+"ماذا يعني لك حرف A",
+"متى أول مرة أحببت وأحسست أن قلبك دق؟",
+"اسم معلم ترك اثراً جميل عليك رغم قسوتة.؟",
+"هل تفضلين الملابس الكاجوال أم الملابس الرسمية؟",
+"هل تستطيع أن تعيش بدون أصدقاء؟",
+"‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭",
+"من هو أكثر صديق مفضل لك؟",
+"اخر همك في الحياة ؟",
+"آخر مرة زرت مدينة الملاهي؟",
+"كم مرة تقدمت بطلب يد فتاة؟",
+"هل تتعاطى المخدرات؟",
+"هات شعورك بسطر اغُنيه؟",
+"شو حابب تقول للاشخاص اللي بتدخل حياتك؟",
+"متى المرة الأخيرة التي نشب خلاف بينكما فيها؟ وعلى ماذا كان هذا الخلاف؟ وهل تم حله بشكل تام؟",
+"‏- تخيّل شيء قد يحدث في المستقبل؟",
+"هل قمت بعمل حادث وتركت الضحية ولذت بالفرار؟",
+"هل تحبين زوجك/زوجتك؟",
+"هل تشعر أن هنالك مَن يُحبك؟",
+"ما هو الشيء الذي لا تقدر على تحمله في الحياة؟",
+"صريح، مشتاق؟",
+"كيف تقيم علاقاتك السابقة؟",
+",هل يمكن أن تفكر بالانتقام من شخص أساء إليك؟",
+"قوة الصداقة بشو بتتكون؟",
+"في أي وقت شعرن اتجاهي بالحب؟",
+"عبر عن حبك او كرهك لشخص ما تقدر توصل له مشاعرك",
+"هل سبق وضربت أحدهم؟ ولماذا فعلت ذلك؟",
+"‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚",
+"هل تحب أن يكون لزوجتك/ لزوجك صديق/ صديقة؟",
+"كم أعلى مبلغ جمعته؟",
+"هل تشعر أن هنالك مَن يُحبك؟",
+"من الذي وقع بحب الآخر أولًا؟ وهل كان ذلك من النظرة الأولى؟",
+"علمنا عن تجربه خلت شخصيتك اقوى ؟",
+"أيهما تختار علاقات الصداقة أم الحب؟",
+"انت من الناس الكتومة ولا تفضفض؟",
+"إذا ذهبت إلى مكتبة مليئة بالعديد من الكتب، ما هي الكُتب التي سوف تختارها؟",
+"أكثر شيء تغيّر في أسلوب حياتك بعد كورونا ؟",
+"هي يوجد شخص تريد أن تعتذر له عن فعل بدر منك وندمت عليه لاحقًا؟",
+"كل شيء يهون الا ؟",
+"هل تحب جميع أخواتك بنفس القدر؟",
+"إذا قالوا لك قم بفعل جريمة ما، فما هي الجريمة التي سوف تختارها؟",
+"شاركنا أقوى بيت شِعر من تأليفك؟",
+"متى كانت المرة الأولى التي اجتمعتم فيها؟ وأين كان ذلك؟ وأي مناسبة كانت؟",
+"ماذا تفعل لو وجدت سيارتك قد ضُربت أو خُدشت؟",
+"منشن لصديقك المُقرب؟.",
+"هل تتمكن من توفير أي مبلغ من مرتبك؟",
+"هل تقبل بالزواج من فتاة تعرفت عليها عن طريق الإنترنت؟",
+"يوم من أيام الأسبوع روتينه ممل عندك ؟",
+"‏- شيء سمعته عالق في ذهنك هاليومين؟",
+"من هو الصديق الذي يمكن له أن يساعد الجميع ويخفف الحزن عنهم؟",
+"أنا آسف على ....؟",
+"هل سبق وفكرت في الانتحار؟",
+"هل تشعر بحب التملك؟",
+"‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟",
+"عندك الشخص الي مستعد يوقف ضد العالم عشانك.؟",
+"تدوس على قلبك او كرامتك؟",
+"ما هو الشيء الذي تكرهه بشدة؟ ولماذا؟",
+"لو الشخص اللي تحبه قال بدخل حساباتك بتعطيه ولا بترفض؟",
+"هل تحب مشاهدة الأفلام التي تعرض مقاطع عرى؟",
+"هل من الممكن أن تضرب أبنائك إذا قاموا بتكسير شيء غالي لديك مثل اللاب توب؟",
+"هل ترى الحب نوع من أنواع الأنانية؟",
+"‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤",
+"منشن شخص واعترف له بشي",
+"إذا وجدت الشخص الذي أحببتهُ في يومٍ ما يمسك بطفله، هل هذا سيشعرك بالألم؟",
+"عندكم شخص بالبيت بصلح اي شي بيخرب؟",
+"هل تغارين من صديقاتك؟",
+"العلاقة السرية دائماً تكون حلوة؟",
+"ماذا تتأملين في زوجك المستقبلي؟",
+"ما هو الحيوان الذي تود تربيته؟",
+"اخر خيانه؟.",
+"انت من الناس اللي تتغزل بالكل ولا بالشخص اللي تحبه بس؟",
+"ما هي مواصفات فتى أحلامك؟",
+"هل تواظب على الصلاة؟",
+"لو كانت حياتك كتاب ماذا سيكون اسمها؟",
+"هل تستطيع قضاء احتياجاتك من مرتبك؟",
+"هل تتابع أي من الأعمال الدرامية والأفلام؟ وما هو النوع المفضل بالنسبة لك؟",
+"لو خيروك بين الحصول على الحظ أو على المال.؟",
+"ما هي أكثر الصفات التي تحبها في والدتك ووالدك؟",
+"كيف تقيم علاقاتك الشخصية؟",
+"تدوس على قلبك او كرامتك؟",
+"من هو أول حب في حياتك وكم كان عمرك وقتها؟",
+"صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔",
+"ما هو اللون الذي يثيرك أكثر على المرأة؟",
+"هل يمكن لك التخلي عن حبك أمام كرامتك؟",
+"كيف تنظر إلى الانفصال هل هو نهاية العالم أم أنه بداية جديدة؟",
+"كيف تصف حياتك بـ 3 كلمات؟",
+"اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.",
+"ما هي المدة الزمنية التي تقضيها أمام المرآة قبل الخروج من المنزل؟",
+"هل يمكنك أن تضرب فتاة؟",
+"وش الحب بنظرك؟",
+"هل أنت شخص عُدواني؟",
+"هل تعرضت للخيانة في يومٍ ما؟",
+"ميزة وعيب فيك ؟",
+"أين تريد أن تقضي أطول مدة ممكنة في حياتك؟",
+"عندك الشخص الي مستعد يوقف ضد العالم عشانك.؟",
+" حالتك الان",
+"شهر من أشهر العام له ذكرى جميلة معك؟",
+"كيف تشوف الجيل هذا؟",
+"هل تعلقت من قبل بأي شخص وتخيلت أنك لا تستطيع نسيانه ولكنك نسيت؟",
+"كم أعلى مبلغ جمعته؟",
+"انت من الناس اللي تتغزل بالكل ولا بالشخص اللي تحبه بس؟",
+"أنت في حفلة مفاجئة ولكن مظهرك غير مناسب  كيف تتصرف؟",
+"لو أغمضت عينيك الآن فما هو أول شيء ستفكر به؟",
+"شو هو طعامك المفضل؟",
+"منشن لصديقك المُقرب؟.",
+"هل أنت سريع البديهة؟",
+"هل يخفي أي منكما أي أسرار عن الآخر؟",
+"متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟",
+"لو الشخص اللي تحبه قال بدخل حساباتك بتعطيه ولا بترفض؟",
+"من هو أخر شخص انضم إلى هذه المجموعة؟",
+"ما الذي يدفع الحبيب للخيانة.",
+"العلاقة السرية دائماً تكون حلوة؟",
+"هل تقبل بالزواج من فتاة تعرفت عليها عن طريق الإنترنت؟",
+"عبر عن حبك او كرهك لشخص ما تقدر توصل له مشاعرك ؟",
+"هل لديك ميول جنسية شاذة؟",
+"آخر مرة أكلت أكلتك المفضّلة؟",
+"هل تحب اسمك أم أنك تود تغييره لو تمكنت؟",
+"عندك الشخص الي مستعد يوقف ضد العالم عشانك.؟",
+"ما هي فاصلة التحول في حياتك؟",
+"ما هو أسوأ شعور مررت به من قبل؟",
+"أختر كلمة واحدة تصفني بها؟",
 }
 
 local Text = msg.text
@@ -6190,7 +6271,7 @@ elseif not msg.SudoUser and Text== "احبك" or Text=="حبك" then
 return sendMsg(msg.chat_id_,msg.id_,lovm[math.random(#lovm)])
 elseif not msg.SudoUser and Text== "تحبني" then
 return sendMsg(msg.chat_id_,msg.id_,lovm[math.random(#lovm)])
-elseif Text== "غني" or Text=="غنيلي" then 
+elseif Text== "كت" or Text=="كت تويت" then 
 return sendMsg(msg.chat_id_,msg.id_,song[math.random(#song)])
 elseif Text=="اتفل" or Text=="تفل" then
 if msg.Admin then 
@@ -6201,51 +6282,6 @@ end
 elseif Text== "تف" then return sendMsg(msg.chat_id_,msg.id_,"عيب ابني/بتي اتفل/ي اكبر منها شوية 😌😹")
 elseif Text== "شلونكم" or Text== "شلونك" or Text== "شونك" or Text== "شونكم" then 
 return sendMsg(msg.chat_id_,msg.id_,"احســن مــن انتهــــہ شــلونـــك شــخــبـارك يـــول مۂــــشتـــاقـــلك شــو ماكـــو 😹🌚")
-elseif Text== "شنو"  then return sendMsg(msg.chat_id_,msg.id_," شـ؏ـليـڪ 😞😹")
-elseif Text== "شبيك"  then return sendMsg(msg.chat_id_,msg.id_," معليك انته شبيه 😐")
-
-elseif Text== "😂😂"  then return sendMsg(msg.chat_id_,msg.id_," •❤️•فٌدِيـ❤️ـِـْْت هلضحكه•❤️•")
-
-elseif Text== "هلاو"  then return sendMsg(msg.chat_id_,msg.id_," هـلاوات يحيلي 💘🏌️")
-
-elseif Text== "ههههه"  then return sendMsg(msg.chat_id_,msg.id_," فـدوا عـساا دوم💘")
-
-elseif Text== "هههه"  then return sendMsg(msg.chat_id_,msg.id_," شٍهِلَ ضّحٌګهِ أّلَحٌلَوِهِ🥺✨")
-
-elseif Text== "هههههه"  then return sendMsg(msg.chat_id_,msg.id_," ئووف شهالضحكه😻")
-
-elseif Text== "🌚🌚"  then return sendMsg(msg.chat_id_,msg.id_," منور صخام الجدر 🌝😹")
-
-elseif Text== "🌚"  then return sendMsg(msg.chat_id_,msg.id_," منور صخام الجدر 🌝😹")
-
-elseif Text== "😡😡"  then return sendMsg(msg.chat_id_,msg.id_," ابرد  🚒")
-
-elseif Text== "😑😑"  then return sendMsg(msg.chat_id_,msg.id_," ديي وجهك معقد😑👊🏻")
-
-elseif Text== "😑"  then return sendMsg(msg.chat_id_,msg.id_," ديي وجهك معقد😑👊🏻")
-
-elseif Text== "🙄🙄"  then return sendMsg(msg.chat_id_,msg.id_," كشششش عاع😃 طيورك فوك😂")
-
-elseif Text== "🙄"  then return sendMsg(msg.chat_id_,msg.id_," كشششش عاع😃 طيورك فوك😂")
-elseif Text== "😹😹😹"  then return sendMsg(msg.chat_id_,msg.id_," ئووف شهالضحكه😻")
-elseif Text== "ليش"  then return sendMsg(msg.chat_id_,msg.id_," كول للحايط ليش اني شمدريني 😢")
-elseif Text== "هه"  then return sendMsg(msg.chat_id_,msg.id_," دِوُؤؤم آلُِضحٍڪهـ😍 ڪبَدِي❤️")
-elseif Text== "تمام"  then return sendMsg(msg.chat_id_,msg.id_," دومك بخير حياتي 😘")
-elseif Text== "🤣🤣"  then return sendMsg(msg.chat_id_,msg.id_," شٍهِلَ ضّحٌګهِ أّلَحٌلَوِهِ🥺✨")
-elseif Text== "😹😹"  then return sendMsg(msg.chat_id_,msg.id_," فـدوا عـساا دوم💘")
-elseif Text== "ههههههه"  then return sendMsg(msg.chat_id_,msg.id_," سم فوڪ سم حلڪڪ رح ينشڪ 🦦🌚")
-elseif Text== "🙂🙂"  then return sendMsg(msg.chat_id_,msg.id_," ثـڪـيـل الصاڪڪ🙊💘")
-elseif Text== "صاكه"  then return sendMsg(msg.chat_id_,msg.id_,"اووويلي يابه 😍❤️ دزلي صورتهه 🐸💔")
-elseif Text== "باي"  then return sendMsg(msg.chat_id_,msg.id_,"وين خلينه متونسين بيك 😂")
-elseif Text== "🙄🙄🙄"  then return sendMsg(msg.chat_id_,msg.id_," لاتطلع على شي مابيخصك😆")
-elseif Text== "شلونج"  then return sendMsg(msg.chat_id_,msg.id_," عمࢪࢪيي قـميـل بخيࢪ اذا حـلو بخيࢪ💘🙊")
-elseif Text== "وين"  then return sendMsg(msg.chat_id_,msg.id_," باࢪض الله الـواسـعـه💘")
-elseif Text== "كفو"  then return sendMsg(msg.chat_id_,msg.id_," ڪـفـو مـنڪ عمࢪيي💘")
-elseif Text== "والله"  then return sendMsg(msg.chat_id_,msg.id_," لتحلف انت جذاب 🤨")
-elseif Text== "شخبارج"  then return sendMsg(msg.chat_id_,msg.id_," 🙁حلكي نشك من وره الدراسه")
-elseif Text== "نورت"  then return sendMsg(msg.chat_id_,msg.id_," نـ﴿💡﴾ـورك/ج ؏ـمـ😲ـآني وحہـ(🔥)ـہرگ بيـ🏡ـت جيہـْ✍ـہرآنيًٍِ")
-elseif Text== "نورتي"  then return sendMsg(msg.chat_id_,msg.id_," نـ﴿💡﴾ـورك/ج ؏ـمـ😲ـآني وحہـ(🔥)ـہرگ بيـ🏡ـت جيہـْ✍ـہرآنيًٍِ")
-elseif Text== "😂😂"  then return sendMsg(msg.chat_id_,msg.id_," تؤبَشُني هـضحٍڪة☺️❤️")
 elseif Text== "صاكه"  then return sendMsg(msg.chat_id_,msg.id_,"اووويلي يابه 😍❤️ دزلي صورتهه 🐸💔")
 elseif Text== "وينك"  then return sendMsg(msg.chat_id_,msg.id_,"دور بكلبك وتلكاني 😍😍❤️")
 elseif Text== "منورين"  then return sendMsg(msg.chat_id_,msg.id_,"من نورك عمري ❤️🌺")
