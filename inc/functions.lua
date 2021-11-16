@@ -419,24 +419,23 @@ return ApiToken..'/'..JSON.decode(UrlInfo).result.file_path
 end 
 
 ----------------------{ End Api Token Bot }-----------------------------
-
 function UpdateSource(msg,edit)
 if edit then EditMsg(msg.chat_id_,msg.id_,'10% - |█          |') end
 if edit then EditMsg(msg.chat_id_,msg.id_,'20% - |███         |') end
-download_file('https://raw.githubusercontent.com/MODbots/MOD/master/inc/Run.lua','./inc/Run.lua')
+download_file('https://raw.githubusercontent.com/mode123mode/MOD/master/inc/Run.lua','./inc/Run.lua')
 if edit then EditMsg(msg.chat_id_,msg.id_,'40% - |█████       |') end
-download_file('https://raw.githubusercontent.com/MODbots/MOD/master/inc/locks.lua','./inc/locks.lua')
+download_file('https://raw.githubusercontent.com/mode123mode/MOD/master/inc/locks.lua','./inc/locks.lua')
 if edit then EditMsg(msg.chat_id_,msg.id_,'60% - |███████     |') end
-download_file('https://raw.githubusercontent.com/MODbots/MOD/master/inc/Script.lua','./inc/Script.lua')
+download_file('https://raw.githubusercontent.com/mode123mode/MOD/master/inc/Script.lua','./inc/Script.lua')
 if edit then EditMsg(msg.chat_id_,msg.id_,'80% - |█████████   |') end
-download_file('https://raw.githubusercontent.com/MODbots/MOD/master/inc/functions.lua','./inc/functions.lua')
+download_file('https://raw.githubusercontent.com/mode123mode/MOD/master/inc/functions.lua','./inc/functions.lua')
 if edit then EditMsg(msg.chat_id_,msg.id_,'100% - |█████████████|\n\n🔝*︙* تم تحديث السورس الى اصدار *v'..redis:get(MOD..":VERSION")..'*\n📟*︙* تم اعاده تشغيل السورس بنجاح') end
 if edit then dofile("./inc/Run.lua") end
 print("Update Source And Reload ~ ./inc/Run.lua")
 
 end
 ----------------------{ Get Name Bot }-----------------------------
-Bot_Name = redis:get(MOD..":NameBot:") or "الزعيم"
+Bot_Name = redis:get(MOD..":NameBot:") or "مودي"
 
 
 function GetType(ChatID) 
