@@ -2020,30 +2020,28 @@ end
 
 if MsgText[1]== "ترتيب الاوامر" then
 if not msg.Creator then return "[+] هذا الامر يخص {المطور ، المالك ، المنشئ الاساسي ، المنشئ} فقط  \n" end
- redis:set(MOD.."sendamr"..msg.chat_id_..":ا","ايدي")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"ا")
- redis:set(MOD.."sendamr"..msg.chat_id_..":م","رفع مميز")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"م")
- redis:set(MOD.."sendamr"..msg.chat_id_..":اد","رفع ادمن")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"اد")
- redis:set(MOD.."sendamr"..msg.chat_id_..":مد","رفع مدير")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"مد")
- redis:set(MOD.."sendamr"..msg.chat_id_..":من","رفع منشئ")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"من")
- redis:set(MOD.."sendamr"..msg.chat_id_..":اس","رفع منشئ اساسي")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"اس")
- redis:set(MOD.."sendamr"..msg.chat_id_..":تعط","تعطيل الايدي بالصوره")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"تعط")
- redis:set(MOD.."sendamr"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"تفع")
- redis:set(MOD.."sendamr"..msg.chat_id_..":تك","تنزيل الكل")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"تك")
- redis:set(MOD.."sendamr"..msg.chat_id_..":رد","اضف رد")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"رد")
- redis:set(MOD.."sendamr"..msg.chat_id_..":حذ","حذف رد")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"حذ")
- redis:set(MOD.."sendamr"..msg.chat_id_..":ت","تثبيت")
- redis:sadd(MOD.."CmDlist"..msg.chat_id_,"ت")
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"ا")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'ا','ايدي')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"م")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'م','رفع مميز')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"اد")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'اد','رفع ادمن')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"تفع")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'تفع','تفعيل الايدي بالصوره')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"تعط")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'تعط','تعطيل الايدي بالصوره')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"مد")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'مد','رفع مدير')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"ت")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'ت','تثبيت')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"رد")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'رد','اضف رد')
+ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"حذ")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'حذ','حذف حذ')
+
+
+
+
 return sendMsg(msg.chat_id_,msg.id_,'*꙳.︙تم ترتيب الاوامر بالشكل التالي ~*\n꙳. ايدي - ا . \n꙳. طرد - دي . \n꙳. حظر - بنعال . \n꙳. كتم - اش . \n꙳. مميز - م .\n꙳. ادمن - اد .\n꙳. مدير - مد . \n꙳. منشى - من . \n꙳. المنشئ الاساسي - اس . \n꙳. تعطيل الايدي بالصوره - تعط .\n꙳. تفعيل الايدي بالصوره - تفع .')
  end
  
