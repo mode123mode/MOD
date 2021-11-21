@@ -2044,6 +2044,12 @@ redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"حذ")
 redis:hset(MOD..'CmD:'..msg.chat_id_,'حذ','حذف رد')
 redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"ت")
 redis:hset(MOD..'CmD:'..msg.chat_id_,'ت','تثبيت')
+redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"اش")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'اش','كتم')
+redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"بنعال")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'بنعال',تقييد')
+redis:sadd(MOD..'CmDlist:'..msg.chat_id_,"دي")
+redis:hset(MOD..'CmD:'..msg.chat_id_,'دي','طرد')
 return sendMsg(msg.chat_id_,msg.id_,'*꙳.︙تم ترتيب الاوامر بالشكل التالي ~*\n꙳. ايدي - ا . \n꙳. طرد - دي . \n꙳. حظر - بنعال . \n꙳. كتم - اش . \n꙳. مميز - م .\n꙳. ادمن - اد .\n꙳. مدير - مد . \n꙳. منشى - من . \n꙳. المنشئ الاساسي - اس . \n꙳. تعطيل الايدي بالصوره - تعط .\n꙳. تفعيل الايدي بالصوره - تفع .')
  end
  
