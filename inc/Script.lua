@@ -4179,6 +4179,7 @@ end
 local Text = msg.text
 if Text then
 
+
 if Text and (Text:match('(.*)')) and tonumber(msg.sender_user_id_) ~= 0 then
 function dl_username(arg,data)
 if data.username_ then
@@ -4288,6 +4289,69 @@ msg = arg.msg
 local SendOk = false
 if data.content_.ID == "MessageDocument" then return false end
 if msg.text then
+if msg.text == 'رفع النسخه' and msg.SudoBase then
+function by_reply(extra, result, success)   
+if result.content_.document_ then 
+local ID_FILE = result.content_.document_.document_.persistent_id_ 
+local File_Name = result.content_.document_.file_name_
+function download_to_file(url, file_path) 
+local respbody = {} 
+local options = { url = url, sink = ltn12.sink.table(respbody), redirect = true } 
+local response = nil 
+options.redirect = false 
+response = {https.request(options)} 
+local code = response[2] 
+local headers = response[3] 
+local status = response[4] 
+if code ~= 200 then return false, code 
+end 
+file = io.open(file_path, "w+") 
+file:write(table.concat(respbody)) 
+file:close() 
+return file_path, code 
+end 
+if File_Name:match('.json') then
+if tonumber(File_Name:match('(%d+)')) ~= tonumber(MOD) then 
+sendMsg(msg.chat_id_,msg.id_,"🔖¦ ملف النسخه الاحتياطيه ليس لهاذا البوت")   
+return false 
+end      
+local Filere = https.request('https://api.telegram.org/bot'.. Token..'/getfile?file_id='..ID_FILE) 
+local File = JSON.decode(Filere)
+download_to_file('https://api.telegram.org/file/bot'..Token..'/'..File.result.file_path, ''..File_Name) 
+sendMsg(msg.chat_id_,msg.id_,"♻¦ جاري ...\n📥¦ رفع الملف الان")   
+else
+sendMsg(msg.chat_id_,msg.id_,"*📛¦ عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")   
+end      
+local info_file = io.open('./'..MOD..'.json', "r"):read('*a')
+local groups = JSON.decode(info_file)
+for idg,v in pairs(groups.GP_BOT) do
+redis:sadd(MOD..'group:ids',idg)  
+if v.MNSH then
+for k,idmsh in pairs(v.MNSH) do
+redis:sadd(MOD..':MONSHA_BOT:'..idg,idmsh)
+end
+end
+if v.MDER then
+for k,idmder in pairs(v.MDER) do
+redis:sadd(MOD..'owners:'..idg,idmder)  
+end
+end
+if v.MOD then
+for k,idmod in pairs(v.MOD) do
+redis:sadd(MOD..'admins:'..idg,idmod)  
+end
+end
+if v.ASAS then
+for k,idASAS in pairs(v.ASAS) do
+redis:sadd(MOD..':MONSHA_Group:'..idg,idASAS)  
+end
+end
+end
+sendMsg(msg.chat_id_,msg.id_,"\n🔰|تم رفع الملف بنجاح وتفعيل المجموعات\n📬|ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")   
+end   
+end
+tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
+end
 sendMsg(FwdUser,MSG_ID,Flter_Markdown(msg.text))
 SendOk = true
 elseif msg.content_.ID == "MessageSticker" then
